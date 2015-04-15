@@ -249,7 +249,32 @@ bool BoundingBoxManagerSingleton::separateAxisCollision(BoundingBoxClass& box1, 
 	}
 #pragma endregion
 
+	vector3 centerDiff = centerBox2 - centerBox1;
 
+	// Use separate axis theory to test for collisions
+	// If there is an axis with no collisions, return false
+	for(vector3 axis : testAxes)
+	{
+		float distance = abs(glm::dot(axis, centerDiff));
+		float dimensionBox1 = 0.0f;
+		float dimensionBox2 = 0.0f;
+
+		for(vector3 point : box1Points)
+		{
+			dimensionBox1 = std::max(dimensionBox1, abs(glm::dot(point, axis)));
+		}
+
+		for(vector3 point : box2Points)
+		{
+			dimensionBox2 = std::max(dimensionBox2, abs(glm::dot(point,axis)));
+		}
+
+		if(distance > dimensionBox1 + dimensionBox2)
+		{
+			return false;
+		}
+
+	}
 
 	return true;
 
