@@ -1,0 +1,6 @@
+Peer Eval of Timothy Reuter, by Bryce Lockwood
+
+Tim and I worked on the homework together in the labs. He worked mainly on the code for getting the axes 
+and the points of the boxes, while I worked on the collision detection using Separate Axis theory.
+
+10/10, would partner again
